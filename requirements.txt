@@ -1,0 +1,5 @@
+paramiko
+configparser
+pyperclip
+pynotify
+notify2
