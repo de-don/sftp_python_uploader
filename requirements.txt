@@ -1,5 +1,5 @@
 paramiko
 configparser
 pyperclip
-pynotify
 notify2
+dbus-python
