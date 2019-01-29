@@ -1,5 +1,6 @@
 import configparser
 import os
+import uuid
 from datetime import datetime
 
 from lib import (
@@ -23,7 +24,11 @@ uploader = SFTPUploader(
 )
 
 # generate new file name
-screen_name = datetime.now().strftime(config['other']['name_pattern'])
+date = datetime.now().strftime(config['other']['date_format'])
+screen_name = config['other']['name_pattern'].format(
+    date=date,
+    rand=uuid.uuid4().hex[:5],
+)
 screen_url = config['other']['url_pattern'].format(
     host=config['server']['host'],
     port=config['server']['port'],
