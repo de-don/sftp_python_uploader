@@ -8,6 +8,7 @@ from lib import (
     copy_to_clipboard,
     read_in,
     show_popup_message,
+    get_password_from_pass,
 )
 
 # read config
@@ -15,12 +16,15 @@ config_path = os.path.join(os.path.dirname(__file__), 'config.ini')
 config = configparser.ConfigParser()
 config.read(config_path)
 
+# get password
+password = get_password_from_pass(config['credentials']['password_path'])
+
 # connect to sftp
 uploader = SFTPUploader(
     host=config['server']['host'],
     port=int(config['server']['port']),
     username=config['credentials']['username'],
-    password=config['credentials']['password'],
+    password=password,
 )
 
 # generate new file name

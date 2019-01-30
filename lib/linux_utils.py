@@ -1,7 +1,14 @@
+import subprocess
 import sys
 
 import pyperclip
 import notify2
+
+
+def get_password_from_pass(password_path):
+    """Get password from `pass` utility."""
+    result = subprocess.check_output(['pass', 'show', password_path])
+    return result.decode('utf-8').strip('\n')
 
 
 def read_in():
